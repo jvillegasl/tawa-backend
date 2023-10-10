@@ -32,8 +32,6 @@ namespace CEM.C001.BE.DAL
 				{
 					while (reader.Read())
 					{
-						Console.WriteLine(String.Format("{0}, {1}, {2}, {3}, {4}", reader[0], reader[1], reader[2], reader[3], reader[8]));
-
 						H001_TipoDocumento item = new H001_TipoDocumento
 						{
 							IdTipoDocumento = reader.GetInt32(0),
