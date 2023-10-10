@@ -82,9 +82,40 @@ namespace CEM.C001.BE.DAL
 			return lst;
 		}
 
-		public IEnumerable<H001_Ubigeo> ListarDistrito(string psCodDepartamento, string psCodProvincia)
+		public IEnumerable<H001_Distrito> ListarDistrito(string psCodDepartamento, string psCodProvincia)
 		{
-			List<H001_Ubigeo> lst = new List<H001_Ubigeo>();
+			List<H001_Distrito> lst = new List<H001_Distrito>();
+
+			string queryString = "SELECT * FROM dbo.H001_Ubigeo WHERE CodDepartamento=@CodDepartamento AND CodProvincia=@CodProvincia";
+
+			using (SqlConnection connection = new SqlConnection(database))
+			{
+				SqlCommand command = new SqlCommand(queryString, connection);
+				command.Parameters.Add("@CodDepartamento", SqlDbType.VarChar);
+				command.Parameters["@CodDepartamento"].Value = psCodDepartamento;
+				command.Parameters.Add("@CodProvincia", SqlDbType.VarChar);
+				command.Parameters["@CodProvincia"].Value = psCodProvincia;
+
+				connection.Open();
+
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						H001_Distrito item = new H001_Distrito
+						{
+							CodUbigeo = reader.GetString(0),
+							CodDepartamento = reader.GetString(1),
+							CodProvincia = reader.GetString(2),
+							Distrito = reader.GetString(3),
+							EstadoRegistro = reader.GetBoolean(8)
+						};
+
+						lst.Add(item);
+					}
+				}
+			}
+
 			return lst;
 		}
 	}

@@ -76,13 +76,13 @@ namespace CEM.C001.BE.WebAPI.Controllers
 				using (BLL_H001_Ubigeo instancia = new BLL_H001_Ubigeo(_configuration))
 				{
 					return Ok(instancia.ListarDistrito(psCodDepartamento, psCodProvincia));
-
 				}
 
 			}
 			catch (Exception ex)
 			{
-				return null;
+				Console.WriteLine(ex);
+				return StatusCode(500);
 			}
 		}
 

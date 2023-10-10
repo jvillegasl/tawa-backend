@@ -8,7 +8,7 @@ namespace CEM.C001.BE.Interface
 	{
 		IEnumerable<H001_Departamento> ListarDepartamento();
 		IEnumerable<H001_Provincia> ListarProvincia(string psCodDepartamento);
-		IEnumerable<H001_Ubigeo> ListarDistrito(string psCodDepartamento, string psCodProvincia);
+		IEnumerable<H001_Distrito> ListarDistrito(string psCodDepartamento, string psCodProvincia);
 
 	}
 }
