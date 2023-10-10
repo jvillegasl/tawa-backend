@@ -39,7 +39,8 @@ namespace CEM.C001.BE.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return null;
+				Console.WriteLine(ex);
+                return StatusCode(500);
             }
            
         }

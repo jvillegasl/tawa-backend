@@ -21,7 +21,7 @@ namespace CEM.C001.BE.BLL
             _configuration = configuration;
         }
 
-        public IEnumerable<H001_Ubigeo> ListarDepartamento()
+        public IEnumerable<H001_Departamento> ListarDepartamento()
         {
             I_H001_Ubigeo instancia = new DAL_H001_Ubigeo(_configuration);
             return instancia.ListarDepartamento();
