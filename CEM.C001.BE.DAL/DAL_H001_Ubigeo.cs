@@ -48,9 +48,37 @@ namespace CEM.C001.BE.DAL
 			return lst;
 		}
 
-		public IEnumerable<H001_Ubigeo> ListarProvincia(string psCodDepartamento)
+		public IEnumerable<H001_Provincia> ListarProvincia(string psCodDepartamento)
 		{
-			List<H001_Ubigeo> lst = new List<H001_Ubigeo>();
+			List<H001_Provincia> lst = new List<H001_Provincia>();
+
+			string queryString = "SELECT * FROM dbo.H001_Provincia WHERE CodDepartamento=@Cod";
+
+			using (SqlConnection connection = new SqlConnection(database))
+			{
+				SqlCommand command = new SqlCommand(queryString, connection);
+				command.Parameters.Add("@Cod", SqlDbType.VarChar);
+				command.Parameters["@Cod"].Value = psCodDepartamento;
+
+				connection.Open();
+
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						H001_Provincia item = new H001_Provincia
+						{
+							CodDepartamento = reader.GetString(0),
+							CodProvincia = reader.GetString(1),
+							Provincia = reader.GetString(2),
+							EstadoRegistro = reader.GetBoolean(7)
+						};
+
+						lst.Add(item);
+					}
+				}
+			}
+
 			return lst;
 		}
 

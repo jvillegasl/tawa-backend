@@ -26,7 +26,7 @@ namespace CEM.C001.BE.BLL
             I_H001_Ubigeo instancia = new DAL_H001_Ubigeo(_configuration);
             return instancia.ListarDepartamento();
         }
-        public IEnumerable<H001_Ubigeo> ListarProvincia(string psCodDepartamento)
+        public IEnumerable<H001_Provincia> ListarProvincia(string psCodDepartamento)
         {
             I_H001_Ubigeo instancia = new DAL_H001_Ubigeo(_configuration);
             return instancia.ListarProvincia(psCodDepartamento);
