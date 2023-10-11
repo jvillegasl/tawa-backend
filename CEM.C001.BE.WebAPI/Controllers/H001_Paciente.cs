@@ -28,7 +28,6 @@ namespace CEM.C001.BE.WebAPI.Controllers
 		{
 			try
 			{
-				Console.WriteLine(poH001_NuevoPaciente);
 				using (BLL_H001_Persona instancia = new BLL_H001_Persona(_configuration))
 				{
 					return Ok(instancia.InsertarPersona(poH001_NuevoPaciente));
