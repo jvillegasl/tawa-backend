@@ -21,7 +21,7 @@ namespace CEM.C001.BE.BLL
         }             
      
 
-        public bool InsertarPersona(H001_Persona data)
+        public bool InsertarPersona(H001_NuevoPaciente data)
         {
             {
                 I_H001_Persona instancia = new DAL_H001_Persona(_configuration);               
