@@ -34,7 +34,7 @@ namespace CEM.C001.BE.DAL
 				command.Parameters.AddWithValue("@CodUbigeoNacimiento", poH001_NuevoPaciente.CodUbigeoNacimiento);
 				command.Parameters.AddWithValue("@TelefonoMovil", poH001_NuevoPaciente.TelefonoMovil);
 				command.Parameters.AddWithValue("@Correo", poH001_NuevoPaciente.Correo);
-				command.Parameters.AddWithValue("@CodPersona", "string");
+				command.Parameters.AddWithValue("@CodPersona", (new Random()).Next().ToString());
 				command.Parameters.AddWithValue("@FechaCreaRegistro", DateTime.Now);
 
 				connection.Open();
